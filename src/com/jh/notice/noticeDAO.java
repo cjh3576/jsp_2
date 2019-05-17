@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import com.jh.util.DBConnector;
 
 public class noticeDAO {
-	
 	//열 총 갯수
 	public int getTotalCount(String kind,String search) throws Exception {
 		int result;
