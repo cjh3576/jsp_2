@@ -90,7 +90,7 @@
 		</div>
 		
 		<!-- table -->
-		<table class="table">
+		<table class="table table-hover">
 			<thead>
 			<tr>
 				<th>번호</th>
@@ -102,16 +102,16 @@
 				<th>평균</th>
 			</tr>
 			</thead>
-		<%for(pointDTO dto : ar){ %>
+		<%for(pointDTO pointdto : ar){ %>
 			<tbody>
 			<tr>
-				<td><%=dto.getNum() %>
-				<td><a href="./pointSelect.jsp?num=<%= dto.getNum() %>"><%=dto.getName() %></a></td>
-				<td><%=dto.getKor() %></td>
-				<td><%=dto.getEng() %></td>
-				<td><%=dto.getMath() %></td>
-				<td><%=dto.getTotal() %></td>
-				<td><%=dto.getAvg() %></td>
+				<td><%=pointdto.getNum() %>
+				<td><a href="./pointSelect.jsp?num=<%= pointdto.getNum() %>"><%=pointdto.getName() %></a></td>
+				<td><%=pointdto.getKor() %></td>
+				<td><%=pointdto.getEng() %></td>
+				<td><%=pointdto.getMath() %></td>
+				<td><%=pointdto.getTotal() %></td>
+				<td><%=pointdto.getAvg() %></td>
 			</tr>
 			</tbody>
 			<%} %>

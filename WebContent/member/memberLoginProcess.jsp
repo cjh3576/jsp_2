@@ -5,15 +5,28 @@
     request.setCharacterEncoding("UTF-8");
     response.setCharacterEncoding("UTF-8");
     %>
-<jsp:useBean id="dto" class="com.jh.member.memberDTO"/>
-<jsp:setProperty property="*" name="dto"/>
+<jsp:useBean id="memberDTO" class="com.jh.member.memberDTO"/>
+<jsp:setProperty property="*" name="memberDTO"/>
 <%
-
 	memberDAO dao = new memberDAO();
-	dto = dao.memberLogin(dto);
+
+	//체크박스 값 확인
+	String check = request.getParameter("check");
+	//쿠키생성,
+	if(check != null){
+		Cookie c = new Cookie("check",memberDTO.getId());
+		c.setMaxAge(60*60*24*7);
+		response.addCookie(c);
+	} else{
+		Cookie c = new Cookie("check","");
+		response.addCookie(c);
+	}
+	
+	
+	memberDTO = dao.memberLogin(memberDTO);
 	String msg = "Login Fail";
-	if(dto != null){
-		session.setAttribute("member", dto);
+	if(memberDTO != null){
+		session.setAttribute("member", memberDTO);
 		response.sendRedirect("../index.jsp");
 	}else{
 		request.setAttribute("message", msg);
@@ -21,7 +34,6 @@
 		RequestDispatcher view = request.getRequestDispatcher("../common/test/result.jsp");
 		view.forward(request, response);
 	}
-	
 %>
 <!DOCTYPE html>
 <html>

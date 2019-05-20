@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<jsp:useBean id="member" class="com.jh.member.memberDTO" scope="session"/>
+<jsp:setProperty property="*" name="member"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,8 +27,8 @@
 						class="form-control" name="title">
 				</div>
 				<div class="form-group">
-					<label for="writer">Writer:</label> <input type="text"
-						class="form-control" name="writer">
+					<label for="writer">Writer:</label> <input type="text" value='<jsp:getProperty property="id" name="member"/>'
+						class="form-control" name="writer" readonly="readonly">
 				</div>
 				<div class="form-group">
 					<label for="contents">Contents:</label>

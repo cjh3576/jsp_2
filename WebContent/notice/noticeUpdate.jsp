@@ -35,8 +35,8 @@
 		<input type="text" class="form-control" name="title" value="<%=dto.getTitle()%>">
 	</div>
 	<div class="form-group">
-		<label for="writer">Writer:</label>
-		<h2><%=dto.getWriter()%></h2>
+		<label for="writer">Writer:</label><input type="text" class="form-control" name="writer" value="<%=dto.getWriter()%>" readonly="readonly">
+
 	</div>
 	<div class="form-group">
 		<label for="contents">Contents:</label>

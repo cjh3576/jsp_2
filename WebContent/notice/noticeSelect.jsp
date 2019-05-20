@@ -6,14 +6,15 @@
 request.setCharacterEncoding("UTF-8");
 response.setCharacterEncoding("UTF-8");
 	int num = Integer.parseInt(request.getParameter("num"));
-	noticeDAO dao = new noticeDAO();
-	noticeDTO dto = new noticeDTO();
+	noticeDAO noticedao = new noticeDAO();
+	noticeDTO noticedto = new noticeDTO();
 	
-	dto = dao.selectOne(num);
+	noticedto = noticedao.selectOne(num);
 	
-	dao.updateHit(num);//조회수 올리기
+	noticedao.updateHit(num);//조회수 올리기
 	
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +35,7 @@ response.setCharacterEncoding("UTF-8");
 	<div class="container main">
 			<h2>NOTICE </h2>
 		<!--table  -->
-		<% if(dto!= null){ %>
+		<% if(noticedto!= null){ %>
 		<table class="table table-hover">
 			<thead>
 				<tr>
@@ -46,20 +47,22 @@ response.setCharacterEncoding("UTF-8");
 			</thead>
 			<tbody>
 				<tr>
-					<td><%=dto.getTitle() %></td>
-					<td><%=dto.getWriter() %></td>
-					<td><%=dto.getReg_date() %></td>
-					<td><%=dto.getHit() %></td>
+					<td><%=noticedto.getTitle() %></td>
+					<td><%=noticedto.getWriter() %></td>
+					<td><%=noticedto.getReg_date() %></td>
+					<td><%=noticedto.getHit() %></td>
 				</tr>
 				<tr>
-					<td colspan="4"><%=dto.getContents() %>
+					<td colspan="4"><%=noticedto.getContents() %>
 				</tr>
 			</tbody>
 		
 		</table>
 		<div>
-			<a href="./noticeUpdate.jsp?num=<%= num %>" class="btn btn-primary">Update</a>		
+			<%if(  memberdto != null && memberdto.getId().equals("admin")){ %>
+			<a href="./noticeUpdateCheck.jsp?num=<%= num %>" class="btn btn-primary">Update</a>		
 			<a href="./noticeDelete.jsp?num=<%= num %>" class="btn btn-danger">Delete</a>
+			<%} %>
 		</div>
 		<%}else { %>
 			<h1> 없는 메뉴 입니다.</h1>

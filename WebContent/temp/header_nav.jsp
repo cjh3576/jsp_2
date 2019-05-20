@@ -16,15 +16,15 @@
           <li class="nav-item">
             <a class="nav-link" href="<%=application.getContextPath() %>/notice/noticeList.jsp">Notice</a>
           </li>
-          <%memberDTO dto = (memberDTO)session.getAttribute("member"); %>
-          <%if(dto!=null){ %>
+          <%memberDTO memberdto = (memberDTO)session.getAttribute("member"); %>
+          <%if(memberdto!=null){ %> <!-- 로그인이 되어있는 상태  -->
            <li class="nav-item">
             <a class="nav-link" href="<%=application.getContextPath() %>/member/memberMyPage.jsp">MyPage</a>
           </li>
            <li class="nav-item">
             <a class="nav-link" href="<%=application.getContextPath() %>/member/memberLogout.jsp">Logout</a>
           </li>
-          <%}else{ %>
+          <%}else{ %> <!-- 로그인 X  -->
           <li class="nav-item">
             <a class="nav-link" href="<%=application.getContextPath() %>/member/memberCheck.jsp">Join</a>
           </li>

@@ -84,7 +84,9 @@
 #title{
 	cursor: pointer;
 }
-
+.select{
+	cursor: pointer;
+}
 </style>
 
 </head>
@@ -103,14 +105,14 @@
 					<th>HIT</th>
 				</tr>
 			</thead>
-			<%for(noticeDTO dto : ar){ %>
+			<%for(noticeDTO noticedto : ar){ %>
 			<tbody>
 				<tr>
-					<td id="num"><%=dto.getNum()%></td>
-					<td class="select"><%=dto.getTitle()%></td>
-					<td><%=dto.getWriter()%></td>
-					<td><%=dto.getReg_date()%></td>
-					<td><%=dto.getHit()%></td>
+					<td id="num"><%=noticedto.getNum()%></td>
+					<td class="select"><%=noticedto.getTitle()%></td>
+					<td><%=noticedto.getWriter()%></td>
+					<td><%=noticedto.getReg_date()%></td>
+					<td><%=noticedto.getHit()%></td>
 				</tr>
 
 			</tbody>
@@ -142,10 +144,11 @@
 		<a href="./noticeList.jsp?curPage=<%=lastNum+1 %>&kind=<%=kind%>&search=<%=search%>">[다음]</a>
 		<%} %>
 		</div>
+		<%if(memberdto != null && memberdto.getId().equals("admin")){ %>
 		<div class="row">
 			<a href="<%=application.getContextPath() %>/notice/noticeWrite.jsp" class="btn btn-primary">Write</a>
-		
 		</div>
+		<%} %>
 	</div>
 
 	<%@include file="../temp/footer.jsp"%>

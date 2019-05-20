@@ -23,6 +23,7 @@
 		var f = document.boardform;
 		var id;
 		var pw;
+		
 		var overlapcheck;
 		$('#iid').keyup(function() {
 			id = document.getElementById('iid');
@@ -36,10 +37,10 @@
 			}
 
 		});//Id 글자수 체크
-
+		
 		$('#idoverlap').click(function() {
-			
-			open("./idoverlap.jsp", "myWindow", "width=400, height=300");
+			id = document.getElementById('iid').value;
+			open("./memberIdCheck.jsp?id="+id , "myWindow", "width=400, height=300");
 			
 		});//Id 중복확인 창 띄우기
 		
@@ -139,8 +140,8 @@
 				return false;
 			}
 			
-			str = document.getElementById('idoverlap').value;
-			if(str !='중복확인성공') {
+			str = document.getElementById('idConfirm').value;
+			if(str !="1") {
 				alert('ID 중복 확인을 하세요.  ');
 				f.id.focus();
 				return false;
@@ -204,6 +205,7 @@
 			<div class="form-group">
 				<label for="id">Id:</label> 
 				<input type="text" class="form-control" id="iid" placeholder="Enter Id" name="id"  >
+				<input type="hidden" id="idConfirm" value="0">
 				<input type="button" value="중복확인" id="idoverlap" >
 				<div id="idcheck" class = "check"></div>
 			</div>
@@ -240,7 +242,7 @@
 					name="email">
 				<div id="emailcheck" class = "check"></div>
 			</div>
-			<input type="submit" class="btn btn-default" value="Join" id = "join">
+			<input type="submit" class="btn btn-primary" value="Join" id = "join">
 		</form>
 	</div>
 	

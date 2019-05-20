@@ -30,8 +30,8 @@
 	request.setAttribute("message", msg);
 	request.setAttribute("path", "../index.jsp");
 
-/* 	RequestDispatcher view = request.getRequestDispatcher("../common/test/result.jsp");
-	view.forward(request, response); */
+RequestDispatcher view = request.getRequestDispatcher("../common/test/result.jsp");
+	view.forward(request, response);
 	
 %>
 <%-- <jsp:useBean id="dto" class="com.jh.member.memberDTO" scope="page"></jsp:useBean>
