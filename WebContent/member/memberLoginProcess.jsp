@@ -9,7 +9,7 @@
 <jsp:setProperty property="*" name="memberDTO"/>
 <%
 	memberDAO dao = new memberDAO();
-
+	
 	//체크박스 값 확인
 	String check = request.getParameter("check");
 	//쿠키생성,
